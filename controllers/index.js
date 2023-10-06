@@ -4,9 +4,9 @@ const _ = require('lodash');
 const axios = require('axios')
 
 router.get("/api/blog-status", async (req, res) => {
-    const url = 'https://intent-kit-16.hasura.app/api/rest/blogs';
+    const url = process.env.URL;
     const headers = {
-        'x-hasura-admin-secret': '32qR4KmXOIpsGPQKMqEJHGJS27G5s7HdSKO3gdtQd2kv5e852SiYwWNfxkZOBuQ6',
+        'x-hasura-admin-secret': process.env.SECRET,
     };
     try {
         const blogs = (await axios.get(url, { headers })).data.blogs
@@ -27,9 +27,9 @@ router.get("/api/blog-status", async (req, res) => {
     }
 })
 router.get('/api/blog-search', async (req, res) => {
-    const url = 'https://intent-kit-16.hasura.app/api/rest/blogs';
+    const url = process.env.URL;
     const headers = {
-        'x-hasura-admin-secret': '32qR4KmXOIpsGPQKMqEJHGJS27G5s7HdSKO3gdtQd2kv5e852SiYwWNfxkZOBuQ6',
+        'x-hasura-admin-secret': process.env.SECRET,
     };
     try {
         const blogs = (await axios.get(url, { headers })).data.blogs
